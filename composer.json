@@ -1,0 +1,44 @@
+{
+	"name" : "elgervb/base64-site",
+	"description" : "Base64 encode things",
+	"type" : "library",
+	"authors" : [{
+			"name" : "Elger van Boxtel",
+			"email" : "elgervb@gmail.com",
+			"homepage" : "http://elgervanboxtel.nl",
+			"role" : "developer"
+		}
+	],
+	"keywords" : [
+		"gulpjs",
+		"gulp"
+	],
+	"homepage" : "https://github.com/elgervb/base64-site",
+	"license" : [
+		"MIT"
+	],
+	"require" : {
+		"elgervb/php-router" : "master-dev",
+		"elgervb/php-upload" : "master-dev",
+		"elgervb/php-http" : "master-dev",
+		"elgervb/php-view" : "master-dev",
+		"elgervb/php-handler" : "master-dev"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "^4.8"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"ns" : [
+				"src",
+				"tests"
+			]
+		}
+	},
+	"support" : {
+		"wiki" : "https://github.com/elgervb/base64-site/wiki",
+		"source" : "https://github.com/elgervb/base64-site",
+		"issues" : "https://github.com/elgervb/base64-site/issues",
+		"email" : "elgervb@gmail.com"
+	}
+}
