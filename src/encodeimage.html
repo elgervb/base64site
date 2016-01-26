@@ -1,0 +1,24 @@
+
+<style>
+  .base64 {
+    min-height: 5em;
+    width: 100%;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+
+  <h1>Upload your image</h1>
+  
+  <form method="post" enctype="multipart/form-data">
+  
+    <label for="upload"> Upload file</label>
+    <input type="file" name="image" required>
+  
+    <button>Submit</button>
+  </form>
+  
+  
+  <textarea {!encoded}class="hidden"{/encoded} readonly class="base64" onfocus="select(this)">{encoded}</textarea>
+    
