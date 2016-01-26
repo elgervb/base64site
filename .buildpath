@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildpath>
+	<buildpathentry kind="src" path="vendor/composer"/>
+	<buildpathentry kind="src" path="vendor/elgervb/php-http/src"/>
 	<buildpathentry kind="src" path="tests"/>
+	<buildpathentry kind="src" path="vendor/elgervb/php-view/src"/>
+	<buildpathentry kind="src" path="vendor/elgervb/php-handler/tests"/>
 	<buildpathentry kind="src" path="src"/>
+	<buildpathentry kind="src" path="vendor/elgervb/php-router/src"/>
+	<buildpathentry kind="src" path="vendor/elgervb/php-handler/src"/>
+	<buildpathentry kind="src" path="vendor/elgervb/php-upload/tests"/>
 	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="src" path="vendor/elgervb/php-upload/src"/>
 </buildpath>
