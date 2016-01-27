@@ -22,7 +22,9 @@
   img {
     max-width: 100%;
   }
-  
+  .error {
+    white-space: pre-wrap;
+  }
 </style>
 
   <h1>Upload your file</h1>
@@ -31,7 +33,7 @@
   
     <label for="upload"> Upload file</label>
     <input type="file" id="upload" name="upload" onchange="this.form.submit()" required>
-  
+    {#error}<p class="error">{error}</p>{/error}
   </form>
   
   {#encoded}

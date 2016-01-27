@@ -29,10 +29,14 @@ $router->route('encode', '/image', function () {
     $options = new upload\UploadOptions();
     $options->setAllowOverwrite(true)
       ->setMaxFiles(1)
-      ->setMaxSize(200000)
-      ->setMimetypes(array('imgage/png','image/gif','image/jpg','image/jpeg','image/pjpeg'));
+      ->setMaxSize(200000);
     
-    $manager = new upload\UploadManager();
+    $manager = new upload\UploadManager($options);
+    try {
+        $manager->validateUploads();
+    } catch (\upload\UploadException $ex) {
+        return new TemplateView(__DIR__ . '/encodeimage.html', array('error'=> $ex->getMessage()));
+    }
     $files = $manager->getUploadedFiles();
     $encoded = '';
     /* @var $file \upload\UploadedFile */
