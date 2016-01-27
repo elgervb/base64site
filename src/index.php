@@ -45,7 +45,8 @@ $router->route('encode', '/image', function () {
         'encoded'=>$encoded,
         'filename'=>$file->getOriginalFilename(),
         'size'=> round($file->getSize()/1024, 2),
-        'mime'=>$file->getMimeType()
+        'mime'=>$file->getMimeType(),
+        'isimage'=>preg_match('#^image\/.*#', $file->getMimeType())
     ));
 }, 'POST');
 
