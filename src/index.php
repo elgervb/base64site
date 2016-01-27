@@ -41,10 +41,16 @@ $router->route('encode', '/image', function () {
         $encoded = base64_encode(file_get_contents($file->getPathname()));
     }
     
+    $size = $file->getSize();
+    $base64size = mb_strlen($encoded);
+    $percentage = ($base64size/$size) * 100;
+    
     return new TemplateView(__DIR__ . '/encodeimage.html', array(
         'encoded'=>$encoded,
         'filename'=>$file->getOriginalFilename(),
-        'size'=> round($file->getSize()/1024, 2),
+        'size'=> round($size/1024, 2),
+        'base64size'=>round($base64size/1024, 2),
+        'percentage'=>round($percentage, 2),
         'mime'=>$file->getMimeType(),
         'isimage'=>preg_match('#^image\/.*#', $file->getMimeType())
     ));
