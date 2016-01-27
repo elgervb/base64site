@@ -35,12 +35,18 @@ $router->route('encode', '/image', function () {
     $manager = new upload\UploadManager();
     $files = $manager->getUploadedFiles();
     $encoded = '';
+    /* @var $file \upload\UploadedFile */
     if ($files->count()) {
         $file = $files->offsetGet(0);
         $encoded = base64_encode(file_get_contents($file->getPathname()));
     }
     
-    return new TemplateView(__DIR__ . '/encodeimage.html', array('encoded'=>$encoded));
+    return new TemplateView(__DIR__ . '/encodeimage.html', array(
+        'encoded'=>$encoded,
+        'filename'=>$file->getOriginalFilename(),
+        'size'=> round($file->getSize()/1024, 2),
+        'mime'=>$file->getMimeType()
+    ));
 }, 'POST');
 
 $result = $router->match($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
