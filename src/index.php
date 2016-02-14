@@ -1,4 +1,7 @@
 <?php
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'On');
+
 use router\Router;
 use handler\Handlers;
 use handler\http\HttpStatusHandler;
@@ -22,14 +25,14 @@ $handlers->add(new HttpStatusHandler());
  *
  * @return Json array with all posts
 */
-$router->route('encode', '/image', function () {
+$router->route('encode', '/', function () {
     return new TemplateView(__DIR__ . '/encodeimage.html');
 })
-->route('upload', '/image', function () {
+->route('upload', '/', function () {
     $options = new upload\UploadOptions();
     $options->setAllowOverwrite(true)
       ->setMaxFiles(1)
-      ->setMaxSize(200000);
+      ->setMaxSize(1024*200); // 200 KB
     
     $manager = new upload\UploadManager($options);
     try {
