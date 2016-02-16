@@ -37,8 +37,8 @@
       </div>
       {#encoded}
       <div class="col-75">
-        <h4 class="data-url">data:{mime};base64,</h4>
-        <textarea readonly class="base64" onfocus="this.select()">{encoded}</textarea>
+        <h4 class="data-url">Data Url</h4>
+        <textarea readonly class="base64" onfocus="this.select()">data:{mime};base64,{encoded}</textarea>
       </div>
       {/encoded}
     </div>
@@ -46,6 +46,7 @@
      {#isimage}
       <img src="data:{mime};base64,{encoded}">
      {/isimage}
+   
    
   </body>
 </html>
