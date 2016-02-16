@@ -43,11 +43,28 @@
       {/encoded}
     </div>
     
-     {#isimage}
+    {#isimage}
+      <h3>code</h3>
+      <p>&lt;img src="data:{mime};base64,{encodedTruncated}"&gt;</p>
+      
+      <h3>preview</h3>
       <img src="data:{mime};base64,{encoded}">
-     {/isimage}
+    {/isimage}
    
-   
+    <div class="popover info">
+        <div class="round">?</div>
+        <div class="hover">
+          <h2 class="title">Base64 encoding tool</h2>
+          
+          <p>Use this tool to limit HTTP request by adding base64 encoded images directly into your HTML or CSS.</p>
+          
+          <h4>HTML</h4>
+          <p>Copy the generated code in the <code>src</code> attribute of the <code>img</code> element.</p>
+          
+          <h4>Css</h4>
+          <p>Copy the generated code into the <code>url(...)</code> of the background image.</p>
+        </div>
+      </div>
   </body>
 </html>
     

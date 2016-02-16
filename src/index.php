@@ -54,6 +54,7 @@ $router->route('encode', '/', function () {
     
     return new TemplateView(__DIR__ . '/encodeimage.html', array(
         'encoded'=>$encoded,
+        'encodedTruncated'=>substr($encoded, 0, 10).'...'.substr($encoded, -10),
         'filename'=>$file->getOriginalFilename(),
         'size'=> round($size/1024, 2),
         'base64size'=>round($base64size/1024, 2),

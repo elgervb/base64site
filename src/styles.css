@@ -78,3 +78,42 @@ img {
   background-color: #ffffff;
   color: #2ECC71;
 }
+
+.info {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+}
+.info .hover {
+  background-color: #26A65B;
+  border: .1rem solid #1E824C;
+  text-align: left;
+  width: 300px;
+}
+.info.popover .hover::before {
+  bottom: -14px;
+  border-top: 7px solid #ffffff;
+}
+.info.popover .hover::after {
+  bottom: -12px;
+  border-top: 7px solid #26A65B;
+}
+.info .hover .title {
+  border-bottom: 1px solid #ffffff;
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.round {
+  border: .2rem solid #1E824C;
+  border-radius: 50%;
+  font-size: 2em;
+  height: 2em;
+  padding: 1rem;
+  transition: box-shadow .2s ease-in 0s;
+  width: 2em;
+}
+.round:hover {
+  box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+}
+
