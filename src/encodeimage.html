@@ -31,7 +31,8 @@
             <p>mime: {mime}</p>
           </div>
           <div class="button-group">
-            <button class="btn-ghost btn-white" onclick="document.querySelector('.base64').select()">Select all</button>
+            <button id="btn-copy" class="btn-ghost btn-white" data-clipboard-target="textarea.base64">Copy to clipboard</button>
+            <div id="message"> </div>
           </div>
         {/encoded}
       </div>
@@ -52,19 +53,40 @@
     {/isimage}
    
     <div class="popover info">
-        <div class="round">?</div>
-        <div class="hover">
-          <h2 class="title">Base64 encoding tool</h2>
-          
-          <p>Use this tool to limit HTTP request by adding base64 encoded images directly into your HTML or CSS.</p>
-          
-          <h4>HTML</h4>
-          <p>Copy the generated code in the <code>src</code> attribute of the <code>img</code> element.</p>
-          
-          <h4>Css</h4>
-          <p>Copy the generated code into the <code>url(...)</code> of the background image.</p>
-        </div>
+      <div class="round">?</div>
+      <div class="hover">
+        <h2 class="title">Base64 encoding tool</h2>
+        
+        <p>Use this tool to limit HTTP request by adding base64 encoded images directly into your HTML or CSS.</p>
+        
+        <h4>HTML</h4>
+        <p>Copy the generated code in the <code>src</code> attribute of the <code>img</code> element.</p>
+        
+        <h4>Css</h4>
+        <p>Copy the generated code into the <code>url(...)</code> of the background image.</p>
       </div>
+    </div>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        var clipboard = new Clipboard('#btn-copy');
+
+        clipboard.on('success', function(e) {
+          var el = document.querySelector('.base64');
+          el.focus();
+          el.select();
+          
+          document.getElementById('message').innerText = "Copied to clipboard. Now go paste it somewhere";
+          
+          e.clearSelection();
+        });
+        
+        clipboard.on('error', function(e) {
+          console.error('Action:', e.action);
+          console.error('Trigger:', e.trigger);
+        });
+      });
+    </script>
   </body>
 </html>
-    
