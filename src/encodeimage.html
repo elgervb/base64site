@@ -31,7 +31,24 @@
             <p>mime: {mime}</p>
           </div>
           <div class="button-group">
-            <button id="btn-copy" class="btn-ghost btn-white" data-clipboard-target="textarea.base64">Copy to clipboard</button>
+            <button id="btn-copy" class="btn-ghost btn-white">Copy to clipboard</button>
+            <div class="field radio">
+              <p>Copy as:</p>
+              <div class="radio-group">
+                <div class="field-inner">
+                  <input type="radio" id="as-raw" name="copy-as" checked>
+                  <label for="as-raw">base64</label>
+                </div>
+                <div class="field-inner">
+                  <input type="radio" id="as-css" name="copy-as">
+                  <label for="as-css">css</label>
+                </div>
+                <div class="field-inner">
+                  <input type="radio" id="as-img" name="copy-as">
+                  <label for="as-img">img</label>  
+                </div>
+              </div>
+            </div>
             <div id="message"> </div>
           </div>
         {/encoded}
@@ -45,9 +62,6 @@
     </div>
     
     {#isimage}
-      <h3>code</h3>
-      <p>&lt;img src="data:{mime};base64,{encodedTruncated}"&gt;</p>
-      
       <h3>preview</h3>
       <img src="data:{mime};base64,{encoded}">
     {/isimage}
@@ -70,7 +84,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function(event) {
-        var clipboard = new Clipboard('#btn-copy');
+        var clipboard = new Clipboard('#btn-copy', {
+          text: function(trigger) {
+            var base64 = document.querySelector('textarea.base64').value;
+            if (document.getElementById('as-img').checked) {
+              return '<img src="' + base64 + '">';
+            } else if (document.getElementById('as-css').checked) {
+              return 'background: url(' + base64 + ');';
+            }
+            return base64;
+          }
+        });
 
         clipboard.on('success', function(e) {
           var el = document.querySelector('.base64');
@@ -88,5 +112,6 @@
         });
       });
     </script>
+    
   </body>
 </html>
